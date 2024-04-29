@@ -37,7 +37,8 @@ project "Connie"
 		"deps/glfw/include",
 		"deps/imgui",
 		"deps/imgui/backends",
-		"deps/implot"
+		"deps/implot",
+		"deps/json/include"
 	}
 
 	libdirs {
