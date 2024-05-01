@@ -14,6 +14,8 @@ public:
 
 private:
 	bool showDemoWindow = {};
+
+    void ShowMenuBar();
 };
 
 #endif

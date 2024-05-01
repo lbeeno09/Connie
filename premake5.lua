@@ -1,23 +1,11 @@
-function getBuildLocation(action)
-	if action == "gmake2" then
-		return "build/make"
-	elseif action == "vs2022" then
-		return "build/vs2022"
-	elseif action == "xcode4" then
-		return "build/Xcode"
-	else
-		return "build/unknown"
-	end
-end
-
 workspace "Connie"
 	configurations { "Debug", "Release" }
 
 filter "action:gmake2"
-	location "build/make"
+	location "build/Make"
 
-filter "action:vs2022"
-	location "build/vs2022"
+filter "action:vs*"
+	location "build/VS"
 
 filter "action:xcode4"
 	location "build/Xcode"
@@ -25,30 +13,49 @@ filter "action:xcode4"
 project "Connie"
 	kind "ConsoleApp"
 	language "C++"
+    cppdialect "C++20"
 
-	local buildLocation = getBuildLocation(_ACTION)
-
-	targetdir(buildLocation .. "/bin/%{cfg.buildcfg}")
-	objdir(buildLocation .. "/bin-int/%{cfg.buildcfg}")
+	targetdir("build/bin/%{cfg.buildcfg}")
+	objdir("build/bin-int/%{cfg.buildcfg}")
 
 	configurations { "Debug", "Release" }
 
 	includedirs {
-		"deps/glfw/include",
 		"deps/imgui",
 		"deps/imgui/backends",
 		"deps/implot",
 		"deps/json/include"
 	}
 
-	libdirs {
-		"deps/glfw/build/src/Release"
-	}
+    filter "system:windows"
+        includedirs {
+		    "deps/glfw/include"
+        }
 
-	links {
-		"opengl32",
-		"glfw3"
-	}
+        libdirs {
+            "deps/glfw/build/src"
+        }
+
+        links {
+            "opengl32",
+            "glfw3"
+        }
+
+    filter "system:macosx"
+        includedirs {
+            "/usr/local/include"
+        }
+
+        libdirs {
+            "/usr/local/lib"
+        }
+
+        links {
+            "Cocoa.framework",
+            "OpenGL.framework",
+            "IOKit.framework",
+            "glfw3"
+        }
 
 	files {
 		"src/**.h",

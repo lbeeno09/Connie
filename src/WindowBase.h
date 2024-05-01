@@ -1,5 +1,5 @@
 #ifndef _WINDOWBASE_H
-#define _WINDOWBSE_H
+#define _WINDOWBASE_H
 
 #define GL_SILENCE_DEPRECATION
 #include <GLFW/glfw3.h>
