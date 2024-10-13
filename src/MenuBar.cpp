@@ -1,99 +1,101 @@
-#include "Window.h"
+#include "App.h"
 
-void Window::ShowMenuBar()
+#include "imgui.h"
+
+void App::showMenuBar()
 {
-    // Menu bar
-    if(ImGui::BeginMainMenuBar())
-    {
-        // File menu
-        if(ImGui::BeginMenu("File"))
-        {
-            if(ImGui::MenuItem("New"))
-            {
+	// Menu bar
+	if(ImGui::BeginMainMenuBar())
+	{
+		// File menu
+		if(ImGui::BeginMenu("File"))
+		{
+			if(ImGui::MenuItem("New"))
+			{
 
-            }
+			}
 
-            if(ImGui::MenuItem("Open"))
-            {
+			if(ImGui::MenuItem("Open"))
+			{
 
-            }
+			}
 
-            if(ImGui::MenuItem("Save"))
-            {
+			if(ImGui::MenuItem("Save"))
+			{
 
-            }
+			}
 
-            if(ImGui::MenuItem("Exit"))
-            {
+			if(ImGui::MenuItem("Exit"))
+			{
 
-            }
+			}
 
-            ImGui::EndMenu();
-        }
+			ImGui::EndMenu();
+		}
 
-        // Edit menu
-        if(ImGui::BeginMenu("Edit"))
-        {
-            if(ImGui::MenuItem("Undo"))
-            {
+		// Edit menu
+		if(ImGui::BeginMenu("Edit"))
+		{
+			if(ImGui::MenuItem("Undo"))
+			{
 
-            }
+			}
 
-            if(ImGui::MenuItem("Redo"))
-            {
+			if(ImGui::MenuItem("Redo"))
+			{
 
-            }
+			}
 
-            if(ImGui::MenuItem("Cut"))
-            {
+			if(ImGui::MenuItem("Cut"))
+			{
 
-            }
+			}
 
-            if(ImGui::MenuItem("Copy"))
-            {
+			if(ImGui::MenuItem("Copy"))
+			{
 
-            }
+			}
 
-            if(ImGui::MenuItem("Paste"))
-            {
+			if(ImGui::MenuItem("Paste"))
+			{
 
-            }
+			}
 
-            ImGui::EndMenu();
-        }
+			ImGui::EndMenu();
+		}
 
-        // View menu
-        if(ImGui::BeginMenu("View"))
-        {
-            if(ImGui::MenuItem("Show ImGUI Demo", nullptr, showDemoWindow))
-            {
-                showDemoWindow = !showDemoWindow;
-            }
+		// View menu
+		if(ImGui::BeginMenu("View"))
+		{
+			if(ImGui::MenuItem("Show ImGUI Demo", nullptr, showDemoWindow_))
+			{
+				showDemoWindow_ = !showDemoWindow_;
+			}
 
-            ImGui::EndMenu();
-        }
+			ImGui::EndMenu();
+		}
 
-        // Help menu
-        if(ImGui::BeginMenu("Help"))
-        {
-            if(ImGui::MenuItem("Documentation"))
-            {
+		// Help menu
+		if(ImGui::BeginMenu("Help"))
+		{
+			if(ImGui::MenuItem("Documentation"))
+			{
 
-            }
+			}
 
-            if(ImGui::MenuItem("Support"))
-            {
+			if(ImGui::MenuItem("Support"))
+			{
 
-            }
+			}
 
-            if(ImGui::MenuItem("About"))
-            {
+			if(ImGui::MenuItem("About"))
+			{
 
-            }
+			}
 
-            ImGui::EndMenu();
-        }
+			ImGui::EndMenu();
+		}
 
-        ImGui::EndMainMenuBar();
-    }
+		ImGui::EndMainMenuBar();
+	}
 }
